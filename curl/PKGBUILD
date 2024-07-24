@@ -1,0 +1,52 @@
+pkgname=curl
+pkgver=8.8.0
+_pkgver="$(printf -- "${pkgver}" | tr "." "_")"
+url='https://curl.se/'
+source=("curl.tar.gz::https://github.com/${pkgname}/${pkgname}/releases/download/${pkgname}-${_pkgver}/${pkgname}-${pkgver}.tar.xz")
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure \
+    --prefix="/$pkgname" \
+    --disable-alt-svc \
+    --disable-ares \
+    --disable-cookies \
+    --disable-basic-auth \
+    --disable-bearer-auth \
+    --disable-digest-auth \
+    --disable-kerberos-auth \
+    --disable-negotiate-auth \
+    --disable-aws \
+    --disable-dateparse \
+    --disable-dnsshuffle \
+    --disable-doh \
+    --disable-form-api \
+    --disable-headers-api \
+    --disable-hsts \
+    --disable-http-auth \
+    --disable-libcurl-option \
+    --disable-mime \
+    --disable-netrc \
+    --disable-ntlm \
+    --disable-ntlm-wb \
+    --disable-proxy \
+    --disable-pthreads \
+    --disable-socketpair \
+    --disable-threaded-resolver \
+    --disable-unix-sockets \
+    --without-brotli \
+    --without-libpsl \
+    --without-nghttp2 \
+    --without-ngtcp2 \
+    --without-zstd \
+    --without-libidn2 \
+    --without-librtmp \
+    --without-zlib \
+    --with-openssl
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="$pkgdir/" install
+}
