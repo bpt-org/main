@@ -1,0 +1,17 @@
+pkgname=libarchive
+pkgver=3.7.4
+pkgrel=1
+url='https://libarchive.org/'
+source=("libarchive.tar.xz::https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix="/$pkgname" \
+        --without-nettle
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="$pkgdir/" install
+}
