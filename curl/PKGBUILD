@@ -1,6 +1,7 @@
 pkgname=curl
 pkgver=8.8.0
 _pkgver="$(printf -- "${pkgver}" | tr "." "_")"
+pkgrel=1
 url='https://curl.se/'
 source=("curl.tar.gz::https://github.com/${pkgname}/${pkgname}/releases/download/${pkgname}-${_pkgver}/${pkgname}-${pkgver}.tar.xz")
 
