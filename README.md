@@ -1,9 +1,9 @@
-# DCC Tools Main
+# Bpt Main
 
-Curated selection of programs for [`dcc-tools`](https://github.com/dcc-tools/dcc-tools).
+Curated selection of programs for [`bpt`](https://github.com/bpt-org/bpt).
 
 ## How to install this bucket
 
 ```
-dcc-tools bucket add main
+bpt bucket add main
 ```
