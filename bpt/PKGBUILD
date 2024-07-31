@@ -1,0 +1,18 @@
+pkgname=bpt
+pkgver=0.1.0
+pkgrel=1
+url='https://github.com/bpt-org/bpt'
+source=("bpt.tar.gz::https://github.com/bpt-org/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  rm CONTRIBUTING.md
+  rm README.md
+  rm .gitignore
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  mkdir -p "${pkgdir}/${pkgname}"
+  cp -r ./ "${pkgdir}/${pkgname}/"
+}
